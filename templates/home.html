@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -6,13 +6,19 @@
   <title>FRC Data</title>
   <link href="./static/output.css" rel="stylesheet">
 </head>
-<body>
-  <div>
-    <form action="/" method="post">
-        <input type="text" id="team" name="team"><br>
-        <input type="submit" value="Enviar">
-    </form>
+<body class="bg-gray-100 flex items-center justify-center h-screen justify-items-center">
+  <div class="bg-white rounded-lg overflow-hidden shadow-md border border-gray-300">
+    <div class="p-4">
+      <form action="/" method="post">
+        <div class="mb-4">
+          <label for="team" class="block text-gray-700 text-sm font-bold mb-2">Team:</label>
+          <input type="text" id="team" name="team" class="shadow appearance-none border rounded w-4 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <div class="flex justify-end">
+          <input type="submit" value="Enviar" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        </div>
+      </form>
+    </div>
   </div>
 </body>
 </html>
-
