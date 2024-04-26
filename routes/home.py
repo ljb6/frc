@@ -8,8 +8,6 @@ def index():
         if request.method == "POST":
             team = request.form['team']
 
-            print("teste", team)
-
             return redirect(url_for('teamSearch.index', team=team))
     except:
         print("Invalid team")

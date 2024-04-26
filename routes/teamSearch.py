@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, redirect, url_for
 import requests
 
 teamSearch = Blueprint('teamSearch', __name__)
@@ -9,13 +9,17 @@ TbaHeaders = {"X-TBA-Auth-Key": TbaApiKey}
 
 @teamSearch.route("/teamsearch")
 def index():
-    team = request.args.get("team")
+    try:
+        team = request.args.get("team")
 
-    response = requests.get(TbaApiEndpoint + f"/team/frc{team}", headers=TbaHeaders).json()
-    print(response)
+        response = requests.get(TbaApiEndpoint + f"/team/frc{team}", headers=TbaHeaders).json()
+        print(response)
 
-    teamName = response["nickname"]
-    teamCountry = response["country"]
-    teamRookieYear = response["rookie_year"]
+        teamName = response["nickname"]
+        teamCountry = response["country"]
+        teamRookieYear = response["rookie_year"]
 
-    return render_template("teamSearch.html", teamName=teamName, team=team, teamCountry=teamCountry)
+        return render_template("teamSearch.html", teamName=teamName, team=team, teamCountry=teamCountry, rookieYear=teamRookieYear)
+    except:
+        print("Invalid team")
+        return redirect(url_for('errorPage.index', team=team))
