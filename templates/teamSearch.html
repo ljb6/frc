@@ -1,11 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team Search</title>
+    <title>Menu Dinâmico</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <h1>{{ teamName }}</h1>
+<body class="bg-gray-100">
+
+    <main class="container mx-auto mt-8">
+        <header class="bg-gray-800 text-white p-4 mt-8 border border-solid rounded-md">
+            <nav class="flex items-center justify-between">
+                <div class="flex space-x-4">
+                    <a href="#general" onclick="showContent('general')" class="hover:text-gray-300">General</a>
+                    <a href="#onfield" onclick="showContent('onfield')" class="hover:text-gray-300">On-field</a>
+                    <a href="#awards" onclick="showContent('awards')" class="hover:text-gray-300">Awards</a>
+                </div>
+            </nav>
+        </header>
+
+        <section id="general" class="py-8 content">
+            <h1 class="text-3xl font-bold">{{ teamName }}</h1>
+            <p class="mt-4">Country: {{ teamCountry }}</p>
+        </section>
+
+        <section id="onfield" class="py-8 content" style="display: none;">
+            <h1 class="text-3xl font-bold">Sobre</h1>
+            <p class="mt-4">Informações sobre a empresa ou projeto.</p>
+        </section>
+
+        <section id="awards" class="py-8 content" style="display: none;">
+            <h1 class="text-3xl font-bold">Contato</h1>
+            <p class="mt-4">Entre em contato conosco.</p>
+        </section>
+    </main>
+
+    <script>
+        function showContent(id) {
+            const content = document.querySelectorAll('.content');
+            content.forEach(content => {
+                if (content.id === id) {
+                    content.style.display = 'block';
+                } else {
+                    content.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
 </body>
 </html>

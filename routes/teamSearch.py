@@ -18,4 +18,4 @@ def index():
     teamCountry = response["country"]
     teamRookieYear = response["rookie_year"]
 
-    return render_template("teamSearch.html", teamName=teamName)
+    return render_template("teamSearch.html", teamName=teamName, team=team, teamCountry=teamCountry)
