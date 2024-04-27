@@ -12,14 +12,26 @@ def index():
     try:
         team = request.args.get("team")
 
-        response = requests.get(TbaApiEndpoint + f"/team/frc{team}", headers=TbaHeaders).json()
-        print(response)
+        responseTeamInfos = requests.get(TbaApiEndpoint + f"/team/frc{team}", headers=TbaHeaders).json()
+        responseTeamEvents = requests.get(TbaApiEndpoint + f"/team/frc{team}/events/2024", headers=TbaHeaders).json()
 
-        teamName = response["nickname"]
-        teamCountry = response["country"]
-        teamRookieYear = response["rookie_year"]
+        teamName = responseTeamInfos["nickname"]
+        teamCountry = responseTeamInfos["country"]
+        teamRookieYear = responseTeamInfos["rookie_year"]
+        teamAttendedEvents = ""
+        
 
-        return render_template("teamSearch.html", teamName=teamName, team=team, teamCountry=teamCountry, rookieYear=teamRookieYear)
+        for event in responseTeamEvents:
+            teamAttendedEvents += event["name"] + "; "
+
+        
+
+        return render_template("teamSearch.html",
+                               teamName=teamName,
+                               team=team,
+                               teamCountry=teamCountry,
+                               rookieYear=teamRookieYear,
+                               teamAttendedEvents=teamAttendedEvents[:-2])
     except:
         print("Invalid team")
         return redirect(url_for('errorPage.index', team=team))
