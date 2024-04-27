@@ -5,7 +5,7 @@ TbaApiEndpoint = "https://www.thebluealliance.com/api/v3"
 TbaHeaders = {"X-TBA-Auth-Key": TbaApiKey}
 
 response = requests.get(TbaApiEndpoint + f"/team/frc1156/matches/2024", headers=TbaHeaders).json()
-#print(response[0])
+print(response[0])
 
 coreData = []
 
@@ -13,8 +13,10 @@ for match in response:
     coreData.append({
         "matchType": match["comp_level"],
         "red": match["alliances"]["red"]["team_keys"],
+        "redScore": match["alliances"]["red"]["score"],
         "blue": match["alliances"]["blue"]["team_keys"],
+        "blueScore": match["alliances"]["blue"]["score"],
         "winningAlliance": match["winning_alliance"],
         })
     
-print(coreData[8])
+#print(coreData[8])
