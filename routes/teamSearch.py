@@ -4,9 +4,9 @@ import statbotics
 
 teamSearch = Blueprint('teamSearch', __name__)
 
-TbaApiKey = "dPeEI571e5LotL4zsavOhgcehtzq0NP7VJaSDOo3gWCMpL1R4riSYvddhBpZZ4Sw"
-TbaApiEndpoint = "https://www.thebluealliance.com/api/v3"
-TbaHeaders = {"X-TBA-Auth-Key": TbaApiKey}
+tbaApiKey = "dPeEI571e5LotL4zsavOhgcehtzq0NP7VJaSDOo3gWCMpL1R4riSYvddhBpZZ4Sw"
+tbaApiEndpoint = "https://www.thebluealliance.com/api/v3"
+tbaHeaders = {"X-TBA-Auth-Key": tbaApiKey}
 
 @teamSearch.route("/teamsearch")
 def index():
@@ -16,8 +16,8 @@ def index():
         sb = statbotics.Statbotics()
 
         sbResponseGetTeam = sb.get_team(int(team))
-        responseTeamInfos = requests.get(TbaApiEndpoint + f"/team/frc{team}", headers=TbaHeaders).json()
-        responseTeamEvents = requests.get(TbaApiEndpoint + f"/team/frc{team}/events/2024", headers=TbaHeaders).json()
+        responseTeamInfos = requests.get(tbaApiEndpoint + f"/team/frc{team}", headers=tbaHeaders).json()
+        responseTeamEvents = requests.get(tbaApiEndpoint + f"/team/frc{team}/events/2024", headers=tbaHeaders).json()
 
         teamName = responseTeamInfos["nickname"]
         teamCountry = responseTeamInfos["country"]
