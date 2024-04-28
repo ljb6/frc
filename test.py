@@ -2,9 +2,9 @@ import requests
 
 tbaApiKey = "dPeEI571e5LotL4zsavOhgcehtzq0NP7VJaSDOo3gWCMpL1R4riSYvddhBpZZ4Sw"
 tbaApiEndpoint = "https://www.thebluealliance.com/api/v3"
-tbaHeaders = {"X-TBA-Auth-Key": TbaApiKey}
+tbaHeaders = {"X-TBA-Auth-Key": tbaApiKey}
 
-response = requests.get(TbaApiEndpoint + f"/team/frc1156/matches/2024", headers=TbaHeaders).json()
+response = requests.get(tbaApiEndpoint + f"/team/frc1156/matches/2024", headers=tbaHeaders).json()
 print(response[0])
 
 coreData = []
