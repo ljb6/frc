@@ -17,9 +17,9 @@ class TbaRequests():
     
     def getTeamEvents(self, team):
         response = requests.get(self.tbaEndpoint + f"/team/frc{team}/events/2024", headers=self.tbaHeaders).json()
-        events = []
+        events = {}
         for event in response:
-            events.append("2024" + event["event_code"])
+            events["2024" + event["event_code"]] = event["name"]
         return events
     
     def getEventsAmpLeverage(self, events):
@@ -52,4 +52,4 @@ class TbaRequests():
         return leverage[:5] + "%"
 
 teste = TbaRequests("dPeEI571e5LotL4zsavOhgcehtzq0NP7VJaSDOo3gWCMpL1R4riSYvddhBpZZ4Sw")
-teste.getTeamEvents("1156")
+print(teste.getTeamEvents("1156"))
