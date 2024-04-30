@@ -1,17 +1,15 @@
 from flask import Blueprint, render_template, request, redirect, url_for
+from classes.TbaRequests import TbaRequests
 
 home = Blueprint('home', __name__)
 
-@home.route("/", methods=["GET", "POST"])
-def index():
-    try:
-        if request.method == "POST":
-            team = request.form['team']
+tba = TbaRequests("dPeEI571e5LotL4zsavOhgcehtzq0NP7VJaSDOo3gWCMpL1R4riSYvddhBpZZ4Sw")
 
-            return redirect(url_for('teamSearch.index', team=team))
+@home.route("/")
+def index():
+    try: 
+        return render_template("home.html")
+                               
     except:
         print("Invalid team")
-    
-    return render_template("home.html")
-
-    
+        return redirect(url_for('errorPage.index'))
