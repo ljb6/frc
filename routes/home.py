@@ -8,7 +8,11 @@ tba = TbaRequests("dPeEI571e5LotL4zsavOhgcehtzq0NP7VJaSDOo3gWCMpL1R4riSYvddhBpZZ
 @home.route("/")
 def index():
     try: 
-        return render_template("home.html")
+        yearInfo = tba.getYearInfo("2024")
+
+        return render_template("home.html",
+                               events=yearInfo["events"]
+                               )
                                
     except:
         print("Invalid team")

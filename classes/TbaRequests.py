@@ -50,6 +50,12 @@ class TbaRequests():
         
         leverage = str(total / len(ampLeverage) * 100)
         return leverage[:5] + "%"
+    
+    def getYearInfo(self, year):
+        response = requests.get(self.tbaEndpoint + f"/events/{year}/keys", headers=self.tbaHeaders).json()
+        events = len(response) - 8
+        
+        return {"events": events}
 
 teste = TbaRequests("dPeEI571e5LotL4zsavOhgcehtzq0NP7VJaSDOo3gWCMpL1R4riSYvddhBpZZ4Sw")
-print(teste.getTeamEvents("1156"))
+teste.getYearInfo("2024")
