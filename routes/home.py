@@ -4,22 +4,27 @@ import datetime
 
 home = Blueprint('home', __name__)
 tba = TbaRequests("dPeEI571e5LotL4zsavOhgcehtzq0NP7VJaSDOo3gWCMpL1R4riSYvddhBpZZ4Sw")
-year = datetime.date.now().year()
+#year = datetime.date.now().year()
 
 @home.route("/")
 def index():
     try: 
+
         yearInfo2024  = tba.getYearInfo("2024")["events"]
         yearInfo2023  = tba.getYearInfo("2023")["events"]
         eventsGrowth = "-" + str(100 - (yearInfo2024 / yearInfo2023 * 100))[:4] + "%"
         teams2024 = 3291
         teamsGrowth = "+" + str((((3291 / 3153) - 1) * 100))[:4] + "%"
 
+        
+
         return render_template("home.html",
                                events2024=yearInfo2024,
                                eventsGrowth=eventsGrowth,
                                teams2024=teams2024,
-                               teamsGrowth=teamsGrowth
+                               teamsGrowth=teamsGrowth,
+                               impactAward = tba.getEventInfo("2024cmptx")["impactAward"],
+                               winners = tba.getEventInfo("2024cmptx")["winners"]
                                )
                                
     except:

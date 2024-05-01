@@ -22,7 +22,7 @@
 
         <section id="general" class="py-10 content">
             <h1 class="text-7xl font-bold flex justify-center">FRC 2024 Rewind</h1>
-            <section class="grid grid-cols-2 gap-4 justify-center mt-12">
+            <section class="grid grid-cols-2 gap-4 justify-center py-12">
                 <div>
                     <h3 class="text-5xl font-bold flex justify-center">{{ events2024 }} events</h3>
                     <p class="text-10xl font-bold flex justify-center text-red-500">{{ eventsGrowth }}</p>
@@ -30,6 +30,20 @@
                 <div>
                     <h3 class="text-5xl font-bold flex justify-center">{{ teams2024 }} teams</h3>
                     <p class="text-10xl font-bold flex justify-center text-green-400">{{ teamsGrowth }}</p>
+                </div>
+            </section>
+            <section class="py-12">
+                <div>
+                    <h3 class="text-5xl font-bold flex justify-center">FIRST Impact Award</h3>
+                    <h3 class="text-5xl font-bold flex justify-center mt-3">{{ impactAward }}</h3>
+                </div>
+            </section>
+            <section class="justify-center py-12">
+                <h3 class="text-5xl font-bold flex justify-center">Winners</h3>
+                <div class="flex justify-center gap-10 mt-3">
+                    {% for winner in winners %}
+                        <h3 class="text-5xl font-bold flex justify-center">{{ winner }}</h3>
+                    {% endfor %}
                 </div>
             </section>
         </section>
