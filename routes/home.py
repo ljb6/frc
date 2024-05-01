@@ -1,9 +1,10 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from classes.TbaRequests import TbaRequests
+import datetime
 
 home = Blueprint('home', __name__)
-
 tba = TbaRequests("dPeEI571e5LotL4zsavOhgcehtzq0NP7VJaSDOo3gWCMpL1R4riSYvddhBpZZ4Sw")
+year = datetime.date.now().year()
 
 @home.route("/")
 def index():

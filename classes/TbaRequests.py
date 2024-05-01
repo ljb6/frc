@@ -56,21 +56,14 @@ class TbaRequests():
         events = len(response) - 8
         
         return {"events": events}
-
-    def getYearActiveTeams(self, year): # TODO: fix complexity to use
-        page = 1
-        counter = 0
-        while True:
-            response = requests.get(self.tbaEndpoint + f"/teams/{year}/{page}", headers=self.tbaHeaders).json()
-            counter += len(response)
-            if len(response) == 0: break
-            page += 1
-            
-        return counter
+    
+    def getEventInfo(self, eventKey):
+        response = requests.get(self.tbaEndpoint + f"/event/{eventKey}/awards", headers=self.tbaHeaders).json()
+        impactAward = response[0]["recipient_list"][0]["team_key"][3:]
+        winners = [x["team_key"][3:] for x in response[1]["recipient_list"]]
+        
+        return {"impactAward": impactAward, "winners": winners}
+        
 
 teste = TbaRequests("dPeEI571e5LotL4zsavOhgcehtzq0NP7VJaSDOo3gWCMpL1R4riSYvddhBpZZ4Sw")
-#print(teste.getYearInfo("2024"))
-#print(teste.getYearActiveTeams("2023"))
-
-# 2023: 3153
-# 2024: 3291
+teste.getEventInfo("2024cmptx")
