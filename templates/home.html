@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>FRC Rewind</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
@@ -16,25 +16,27 @@
                 <div class="flex space-x-4">
                     <a href="#general" onclick="showContent('general')" class="hover:text-gray-300">General</a>
                     <a href="#onfield" onclick="showContent('onfield')" class="hover:text-gray-300">On-field</a>
-                    <a href="#awards" onclick="showContent('awards')" class="hover:text-gray-300">Search team</a>
                 </div>
             </nav>
         </header>
 
-        <section id="general" class="py-8 content">
-            <h1 class="text-5xl font-bold flex justify-center">2024</h1>
-            <h2 class="text-4xl font-bold flex justify-center">{{ events }}</h2>
-            <p>events</p>
+        <section id="general" class="py-10 content">
+            <h1 class="text-7xl font-bold flex justify-center">FRC 2024 Rewind</h1>
+            <section class="grid grid-cols-2 gap-4 justify-center mt-12">
+                <div>
+                    <h3 class="text-5xl font-bold flex justify-center">{{ events2024 }} events</h3>
+                    <p class="text-10xl font-bold flex justify-center text-red-500">{{ eventsGrowth }}</p>
+                </div>
+                <div>
+                    <h3 class="text-5xl font-bold flex justify-center">{{ teams2024 }} teams</h3>
+                    <p class="text-10xl font-bold flex justify-center text-green-400">{{ teamsGrowth }}</p>
+                </div>
+            </section>
         </section>
 
         <section id="onfield" class="py-8 content hidden">
             <h1 class="text-2xl font-bold">???</h1>
             <p class="mt-1">Informações sobre a empresa ou projeto.</p>
-        </section>
-
-        <section id="awards" class="py-8 content hidden">
-            <h1 class="text-3xl font-bold">Search team</h1>
-            <p class="mt-4">Entre em contato conosco.</p>
         </section>
 
         <footer class="bg-gray-800 rounded-lg shadow dark:bg-gray-900 m-4 mx-auto">

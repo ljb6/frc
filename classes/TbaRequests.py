@@ -57,5 +57,20 @@ class TbaRequests():
         
         return {"events": events}
 
+    def getYearActiveTeams(self, year): # TODO: fix complexity to use
+        page = 1
+        counter = 0
+        while True:
+            response = requests.get(self.tbaEndpoint + f"/teams/{year}/{page}", headers=self.tbaHeaders).json()
+            counter += len(response)
+            if len(response) == 0: break
+            page += 1
+            
+        return counter
+
 teste = TbaRequests("dPeEI571e5LotL4zsavOhgcehtzq0NP7VJaSDOo3gWCMpL1R4riSYvddhBpZZ4Sw")
-teste.getYearInfo("2024")
+#print(teste.getYearInfo("2024"))
+#print(teste.getYearActiveTeams("2023"))
+
+# 2023: 3153
+# 2024: 3291
