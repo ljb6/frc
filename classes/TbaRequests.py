@@ -1,5 +1,4 @@
 import requests
-
 class TbaRequests():
     def __init__(self, apiKey):
         self.tbaEndpoint = "https://www.thebluealliance.com/api/v3"
