@@ -63,6 +63,3 @@ class TbaRequests():
         
         return {"impactAward": impactAward, "winners": winners}
         
-
-teste = TbaRequests("dPeEI571e5LotL4zsavOhgcehtzq0NP7VJaSDOo3gWCMpL1R4riSYvddhBpZZ4Sw")
-teste.getEventInfo("2024cmptx")
