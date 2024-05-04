@@ -3,7 +3,7 @@ from classes.TbaRequests import TbaRequests
 import datetime
 
 home = Blueprint('home', __name__)
-tba = TbaRequests("dPeEI571e5LotL4zsavOhgcehtzq0NP7VJaSDOo3gWCMpL1R4riSYvddhBpZZ4Sw")
+tba = TbaRequests("TBA API KEY HERE")
 #year = datetime.date.now().year()
 
 @home.route("/", methods=["GET", "POST"])
