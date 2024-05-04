@@ -3,7 +3,7 @@ import plotly.graph_objects as go
 from classes.TbaRequests import TbaRequests
 
 eventSearch = Blueprint('eventSearch', __name__)
-tba = TbaRequests("dPeEI571e5LotL4zsavOhgcehtzq0NP7VJaSDOo3gWCMpL1R4riSYvddhBpZZ4Sw")
+tba = TbaRequests("TBA API KEY HERE")
 
 @eventSearch.route("/eventsearch")
 def index():
