@@ -21,6 +21,8 @@ def index():
         teams2024 = 3291
         teamsGrowth = "+" + str((((3291 / 3153) - 1) * 100))[:4] + "%"
 
+        #ampLeverageWeeks = tba.getEventsAmpLeverage()
+
         return render_template("home.html",
                                events2024=yearInfo2024,
                                eventsGrowth=eventsGrowth,

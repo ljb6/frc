@@ -24,7 +24,7 @@ class TbaRequests():
     def getEventsAmpLeverage(self, events):
         counter = 0
         for event in events:
-            response = requests.get(self.tbaEndpoint + f"/event/{event}/matches??", headers=self.tbaHeaders).json()
+            response = requests.get(self.tbaEndpoint + f"/event/{event}/matches", headers=self.tbaHeaders).json()
             ampLeverage = []
             matchCounter = 1
 
