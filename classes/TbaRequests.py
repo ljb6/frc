@@ -47,8 +47,8 @@ class TbaRequests():
         for metric in ampLeverage:
             total += metric["porcentage"]
         
-        leverage = str(total / len(ampLeverage) * 100)
-        return leverage[:5] + "%"
+        leverage = str(total / len(ampLeverage))
+        return leverage[:5]
     
     def getYearInfo(self, year):
         response = requests.get(self.tbaEndpoint + f"/events/{year}/keys", headers=self.tbaHeaders).json()
