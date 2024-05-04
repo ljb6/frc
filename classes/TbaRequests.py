@@ -1,5 +1,4 @@
 import requests
-
 class TbaRequests():
     def __init__(self, apiKey):
         self.tbaEndpoint = "https://www.thebluealliance.com/api/v3"
@@ -25,7 +24,7 @@ class TbaRequests():
     def getEventsAmpLeverage(self, events):
         counter = 0
         for event in events:
-            response = requests.get(self.tbaEndpoint + f"/event/{event}/matches??", headers=self.tbaHeaders).json()
+            response = requests.get(self.tbaEndpoint + f"/event/{event}/matches", headers=self.tbaHeaders).json()
             ampLeverage = []
             matchCounter = 1
 
@@ -48,8 +47,22 @@ class TbaRequests():
         for metric in ampLeverage:
             total += metric["porcentage"]
         
-        leverage = str(total / len(ampLeverage) * 100)
-        return leverage[:5] + "%"
+        leverage = str(total / len(ampLeverage))
+        return leverage[:5]
+    
+    def getYearInfo(self, year):
+        response = requests.get(self.tbaEndpoint + f"/events/{year}/keys", headers=self.tbaHeaders).json()
+        events = len(response) - 8
+        
+        return {"events": events}
+    
+    def getEventInfo(self, eventKey):
+        response = requests.get(self.tbaEndpoint + f"/event/{eventKey}/awards", headers=self.tbaHeaders).json()
+        impactAward = response[0]["recipient_list"][0]["team_key"][3:]
+        winners = [x["team_key"][3:] for x in response[1]["recipient_list"]]
+        
+        return {"impactAward": impactAward, "winners": winners}
+        
 
 teste = TbaRequests("dPeEI571e5LotL4zsavOhgcehtzq0NP7VJaSDOo3gWCMpL1R4riSYvddhBpZZ4Sw")
-print(teste.getTeamEvents("1156"))
+teste.getEventInfo("2024cmptx")

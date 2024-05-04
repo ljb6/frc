@@ -1,24 +1,85 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FRC Data</title>
-  <link href="./static/output.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRC Rewind</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-100 flex items-center justify-center h-screen justify-items-center">
-  <div class="bg-white rounded-lg overflow-hidden shadow-md border border-gray-300">
-    <div class="p-4">
-      <form action="/" method="post">
-        <div class="mb-4">
-          <label for="team" class="block text-gray-700 text-sm font-bold mb-2">Team:</label>
-          <input type="text" id="team" name="team" class="shadow appearance-none border rounded w-4 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-        </div>
-        <div class="flex justify-end">
-          <input type="submit" value="Enviar" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-        </div>
-      </form>
-    </div>
-  </div>
+
+<body class="bg-gray-100 flex flex-col min-h-screen">
+
+    <main class="flex-grow container mx-auto mt-8">
+        <header class="bg-gray-800 text-white p-4 mt-8 border border-solid rounded-md">
+            <nav class="flex items-center justify-between">
+                <div class="flex space-x-4 items-center">
+                    <a href="#general" onclick="showContent('general')" class="hover:text-gray-300">General</a>
+                    <a href="#onfield" onclick="showContent('onfield')" class="hover:text-gray-300">On-field</a>
+                </div>
+                <form action="/" method="post">
+                    <input type="text" id="event" name="event" placeholder="Enter event" style="width: 50%;" class="border-b border-sky-50 bg-transparent outline-none">
+                </form>
+            </nav>
+        </header>
+
+        <section id="general" class="py-10 content">
+            <h1 class="text-7xl font-bold flex justify-center">FRC 2024 Rewind</h1>
+            <hr>
+            <section class="grid grid-cols-2 gap-4 justify-center py-12">
+                <div>
+                    <h3 class="text-5xl font-bold flex justify-center">{{ events2024 }} events</h3>
+                    <p class="text-10xl font-bold flex justify-center text-red-500">{{ eventsGrowth }}</p>
+                </div>
+                <div>
+                    <h3 class="text-5xl font-bold flex justify-center">{{ teams2024 }} teams</h3>
+                    <p class="text-10xl font-bold flex justify-center text-green-400">{{ teamsGrowth }}</p>
+                </div>
+            </section>
+            <section class="py-12">
+                <div>
+                    <h3 class="text-5xl font-bold flex justify-center">FIRST Impact Award</h3>
+                    <h3 class="text-5xl font-bold flex justify-center mt-3">{{ impactAward }}</h3>
+                </div>
+            </section>
+            <section class="justify-center py-12">
+                <h3 class="text-5xl font-bold flex justify-center">Winners</h3>
+                <div class="flex justify-center gap-10 mt-3">
+                    {% for winner in winners %}
+                        <h3 class="text-5xl font-bold flex justify-center">{{ winner }}</h3>
+                    {% endfor %}
+                </div>
+            </section>
+        </section>
+
+        <section id="onfield" class="py-8 content hidden">
+            <h1 class="text-2xl font-bold">xxxxxxx</h1>
+            <p class="mt-1">xxxxxxxxxxxxxxxxx</p>
+        </section>
+
+        <footer class="bg-gray-800 rounded-lg shadow dark:bg-gray-900 m-4 mx-auto">
+            <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+                <span class="block text-sm text-white sm:text-center dark:text-gray-400">© 2024 | Developed by Lucca, member of 1156.</span>
+            </div>
+        </footer>
+
+    </main>
+
+    
+
+    <script>
+        function showContent(id) {
+            const content = document.querySelectorAll('.content');
+            content.forEach(content => {
+                if (content.id === id) {
+                    content.classList.remove('hidden');
+                } else {
+                    content.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+
 </body>
+
 </html>
