@@ -71,5 +71,3 @@ class TbaRequests():
 
         #return {"oprMean": mean, "topFive":}
 
-teste = TbaRequests("dPeEI571e5LotL4zsavOhgcehtzq0NP7VJaSDOo3gWCMpL1R4riSYvddhBpZZ4Sw")
-teste.getTopFiveOpr("2024brbr")
